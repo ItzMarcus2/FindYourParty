@@ -2,8 +2,10 @@ import firebase from "../../App/utils/config";
 import "firebase/auth";
 import "firebase/database";
 import "firebase/firestore";
+import store from '../../App/store/store';
+import { loggingInUser } from '../../App/actions/actions';
 
-const userDB = firebase.firestore();
+export const userDB = firebase.firestore();
 
 export async function newUser(user) {
   return new Promise(resolve => {
@@ -30,7 +32,7 @@ export async function newUser(user) {
           })
           .then(function(docRef) {
             console.log("Document written with ID: ", newUser.user.uid);
-            resolve[newUser.user.uid];
+            return resolve[newUser.user.uid];
           })
           .catch(function(error) {
             console.error("Error adding document: ", error);
@@ -47,20 +49,22 @@ export async function newUser(user) {
   });
 }
 
-export function logUserIn(email, password) {
-  firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(() => {
-      
-    })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+export async function logUserIn(email, password) {
+  return new Promise(resolve => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(user => {
+        store.dispatch(loggingInUser(user.user.uid));
+      })
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
 
-      console.log(errorCode, errorMessage);
-    });
+        console.log(errorCode, errorMessage);
+      });
+  });
 }
 
 export function userLogOut() {

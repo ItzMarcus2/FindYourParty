@@ -2,6 +2,7 @@ import firebase from "../../App/utils/config";
 import "firebase/database";
 import "firebase/auth";
 import { updateParties } from '../../App/actions/actions';
+import store from '../../App/store/store';
 
 function getDatabaseRef() {
   return firebase
@@ -36,8 +37,8 @@ export async function getParties() {
         });
         partyCount = partyCount + 1;
       });
-      console.log('updated entries');
       
+      store.dispatch(updateParties(array));
       resolve([array, partyCount]);
     });
   });

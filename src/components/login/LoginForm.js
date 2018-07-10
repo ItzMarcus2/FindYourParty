@@ -1,12 +1,5 @@
 import React, { Component } from "react";
 import { logUserIn } from "../../functions/users/UserFunctions";
-import { connect } from "react-redux";
-import { loggingInUser } from "../../App/actions/actions";
-import firebase from "../../App/utils/config";
-
-const mapDispatchToProps = dispatch => {
-  return { loggingInUser: userRef => dispatch(loggingInUser(userRef)) };
-};
 
 class LoginForm extends Component {
 
@@ -31,8 +24,7 @@ class LoginForm extends Component {
 
   async handleSignIn() {
     if (this.state.password_field && this.state.email_field !== "") {
-      const uid = await logUserIn(this.state.email_field, this.state.password_field);
-      this.props.loggingInUser(uid);
+      logUserIn(this.state.email_field, this.state.password_field);
       this.props.history.push('/');
     }
   }
@@ -83,7 +75,4 @@ class LoginForm extends Component {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginForm);
+export default LoginForm;
