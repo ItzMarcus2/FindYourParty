@@ -1,0 +1,52 @@
+.sponsored-fest-container {
+    display: flex;
+    width: 293px;
+    height: 450px;
+    background-color: white;
+    border: 1px solid black;
+    flex-direction: column;
+}
+
+.sponsored-fest-info-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+.sponsored-fest-info-container > .sponsored-fest-info-cell {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    align-content: center;
+    margin: 5px;
+}
+
+.sponsored-fest-info-container > h1 {
+    color: #3C4F76;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 20px 0 20px 0;
+    padding: 0;
+    align-self: center;
+}
+
+.sponsored-fest-info-container > .sponsored-fest-info-cell > p {
+    color: #707070;
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+}
+
+.sponsored-fest-info-cell > #sponsored-fest-title {
+    font-size: 20px;
+    margin-left: 7px;
+    margin-bottom: 0;
+}
+
+.sponsored-fest-info-cell > #sponsored-fest-description {
+    padding-top: 0;
+    margin-left: 55px;
+}
