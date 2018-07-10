@@ -49,8 +49,8 @@ export function newParty(party) {
     .set({
       host: {
         name: {
-          first: "Marcus",
-          last: "Klitgaard"
+          first: "Someone",
+            last: "Something"
         },
         age: 17,
         company: "Complex Solutions"
@@ -63,15 +63,15 @@ export function newParty(party) {
       attendees: {
         first: {
           name: {
-            first: "Mads",
-            last: "Thaulow"
+            first: "Someone",
+            last: "Something"
           },
           age: 21
         },
         second: {
           name: {
-            first: "Sabine",
-            last: "Woldemar"
+            first: "Someone",
+            last: "Something"
           },
           age: 26
         }
