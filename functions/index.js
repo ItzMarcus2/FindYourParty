@@ -8,13 +8,13 @@ const admin = require("firebase-admin");
 admin.initializeApp();
 
 exports.testMail = functions.https.onCall((req, res) => {
-  let transporter = nodemailer.createTransporter({
+  let transporter = nodemailer.createTransport({
     service: 'gmail',
     scure: false,
     port: 25,
     auth: {
-      user: 'itzmarcusyout@gmail.com',
-      pass: 'Marcus2001DK!'
+      user: '***********',
+      pass: '***********'
     },
     tls: {
       rejectUnauthorized: false
@@ -22,18 +22,18 @@ exports.testMail = functions.https.onCall((req, res) => {
   });
 
   let helperOptions = {
-    from: '"Marcus Klitgaard" <itzmarcusyout@gmail.com',
-    to: 'marcus@klitgaard.de',
+    from: '"****" <*****',
+    to: '****',
     subject: 'Hello World',
-    text: 'Wow this is working'
+    text: 'Hello, {{username}}, Your password is: {{ password }}',
+    html: '<b>Hello, <strong>{{username}}</strong>, Your password is:\n<b>{{ password }}</b></p>'
   }
 
   transporter.sendMail(helperOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      return res.status(404).send(error)
     }
-    console.log('The mail was sent');
-    console.log(info);
+    res.status(200).send('The mail was sent.');
   })
 })
 

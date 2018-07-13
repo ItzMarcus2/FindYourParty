@@ -8,10 +8,9 @@ import store from '../../App/store/store';
 const functions = firebase.functions();
 
 export function test() {
-  const testFunction = firebase.functions().httpsCallable('halloWorld');
-  testFunction({text: 'hey ma dude'}).then(function(result) {
-    var result = result.data.text;
-    console.log(result);
+  const mailer = functions.httpsCallable('testMail');
+  mailer().then((result) => {
+    console.log(result.data);
   })
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import "./FestFeed.css";
+import { test } from '../../../functions/database/FestFunctions';
 import { parties } from "../../../functions/Functions";
 import FestCard from "./festCard/FestCard";
 import { connect } from "react-redux";
@@ -15,6 +16,7 @@ class festFeed extends React.Component {
 
   componentDidMount() {
     this.updateData();
+    test();
   }
 
   render() {
