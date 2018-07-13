@@ -3,12 +3,17 @@ import Profile from './Profile/Profile';
 import FestFeed from './FestFeed/FestFeed';
 import SponsoredFest from './SponsoredFest/SponsoredFest';
 import './dashboard.css';
+import { connect } from 'react-redux';
 
-export default class dashboard extends Component {
+const mapStateToProps = state => {
+  return { isLoggedIn: state.isLoggedIn }
+}
+
+class dashboard extends Component {
   render() {
     return (
       <div className="dash-container">
-        <Profile/>
+        {this.props.isLoggedIn && <Profile/>}
 
         <FestFeed/>
 
@@ -17,3 +22,5 @@ export default class dashboard extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps)(dashboard);

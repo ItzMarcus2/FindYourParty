@@ -11,7 +11,6 @@ const mapStateToProps = state => {
 class festFeed extends React.Component {
   async updateData() {
     await parties();
-    console.log(this.props.parties);
   }
 
   componentDidMount() {
@@ -33,6 +32,8 @@ class festFeed extends React.Component {
                   type={party.type}
                   date={party.date}
                   description={party.description}
+                  partyID={party.id}
+                  history={this.props.history}
                 />
               );
             })}
